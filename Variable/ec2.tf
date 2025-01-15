@@ -1,18 +1,23 @@
+# first preference = command line
+# 2nd = tfvars
+# 3rd = environment variable (. export TF_VAR_instance_type = t3.micro )
+# 4th variable value default
+
 resource "aws_security_group" "allo_ssh"{
-    name = "allow_ssh"
-    description = "allowing ssh"
+    name = var.sg_name
+    description = var.sg_description
 
     tags = {
         Name = "allow_ssh"
         CreatedBy = "Pushpa"
-
+        
     }
 
     ingress {
-        from_port        = 22
-        to_port          = 22
-        protocol         = "tcp"
-        cidr_blocks      = ["0.0.0.0/0"]
+        from_port        = var.ssh_port
+        to_port          = var.ssh_port
+        protocol         = var.protocol
+        cidr_blocks      = var.allow_cidr
         ipv6_cidr_blocks = ["::/0"]
   }
 

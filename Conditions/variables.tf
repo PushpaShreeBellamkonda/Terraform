@@ -11,11 +11,7 @@ variable "instance_type" {
   
 }
 
-variable "tags" {
-    default = {
-        Project = "Expense"
-        Environment = "Dev"
-        Module = "DB"
-    }
+variable "instance_name" {
+    default = "db"
   
 }
