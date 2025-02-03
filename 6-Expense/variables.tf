@@ -1,3 +1,5 @@
+# ec2 variables
+
 variable "image_id" {
     type = string
     default = "ami-09c813fb71547fc4f"
@@ -9,14 +11,15 @@ variable "instance_type" {
     type = string 
 }
 
-variable "tags" {
+variable "common_tags" {
     default = {
         Project = "Expense"
         Environment = "Dev"
-        Module = "DB"
-        Name = "DB"
+        Terraform = "true"
     } 
 }
+
+# sg variables
 
 variable "sg_name" {
     default = "allow_ssh" 
@@ -37,4 +40,19 @@ variable "protocol" {
 variable "allowed_cidr" {
     #type = list
     default = ["0.0.0.0/0"]
+}
+
+variable "instance_names" {
+  type = list
+  default = ["db" , "backend" , "frontend"]
+}
+
+# route 53 variables
+
+variable "zone_id" {
+  default = ""
+}
+
+variable "domain_name" {
+  default = "pushpa.online"
 }
